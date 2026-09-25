@@ -1,0 +1,13 @@
+{
+  "name": "safra",
+  "private": true,
+  "type": "module",
+  "description": "Ad-free Arabic football schedule for Saudi fans",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "update": "node scripts/update.mjs",
+    "mock": "node scripts/update.mjs --mock",
+    "find-leagues": "node scripts/find-leagues.mjs",
+    "serve": "python3 -m http.server 8080"
+  }
+}

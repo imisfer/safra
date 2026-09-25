@@ -1,0 +1,10 @@
+{
+  "_note": "Hand-edited text shown on the page. Leave notice empty to hide it. spotlight: set to null to let the script pick automatically (next Saudi match between two top-4 teams).",
+  "notice": "",
+  "spotlight": null,
+  "dates": [
+    { "d": "24 ديسمبر", "t": "توقف دوري روشن لكأس آسيا", "s": "حتى 7 فبراير 2027" },
+    { "d": "يناير 2027", "t": "كأس آسيا في السعودية", "s": "المنتخب على أرضه" },
+    { "d": "2030", "t": "كأس العالم القادمة", "s": "والسعودية تستضيف نسخة 2034" }
+  ]
+}

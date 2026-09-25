@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>صافرة</title>
+<meta name="description" content="مواعيد ونتائج مباريات الدوري السعودي وآسيا وأوروبا بتوقيت السعودية، بلا إعلانات.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Reem+Kufi:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F3F6F2; --surface:#FFFFFF; --sunk:#E9EFEA; --ink:#10201A; --muted:#5C6B63; --rule:#DCE4DE;
+  --accent:#0A6B3D; --accent-soft:#DCEFE3; --on-accent:#FFFFFF;
+  --loss:#B3261E; --chalk:rgba(255,255,255,.18);
+  --display:"Reem Kufi","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic",Tahoma,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0B1410; --surface:#111D17; --sunk:#16241D; --ink:#E4ECE7; --muted:#93A39A; --rule:#23332A;
+    --accent:#43C27F; --accent-soft:#173726; --on-accent:#06120C; --loss:#F2837A; --chalk:rgba(255,255,255,.10);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0B1410; --surface:#111D17; --sunk:#16241D; --ink:#E4ECE7; --muted:#93A39A; --rule:#23332A;
+  --accent:#43C27F; --accent-soft:#173726; --on-accent:#06120C; --loss:#F2837A; --chalk:rgba(255,255,255,.10);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;padding-top:env(safe-area-inset-top,0px)}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.6;padding-inline:16px;padding-block:0 48px}
+.wrap{max-width:760px;margin-inline:auto;display:flex;flex-direction:column;gap:20px}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.num{font-variant-numeric:tabular-nums}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:14px 10px;display:flex;flex-direction:column;gap:12px;border-bottom:1px solid var(--rule)}
+.brand{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand h1{font-family:var(--display);font-weight:700;font-size:30px;line-height:1;margin:0;color:var(--accent);letter-spacing:0}
+.brand h1 span{color:var(--ink);font-family:var(--body);font-weight:500;font-size:13px;margin-inline-start:10px}
+.stamp{font-size:12px;color:var(--muted)}
+.stamp.stale{color:var(--loss)}
+.live{display:inline-flex;align-items:center;gap:5px;color:var(--loss);font-weight:700;font-size:12px}
+.live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--loss);animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25}}
+.off{color:var(--loss);font-size:12px;font-weight:600}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);background:var(--sunk);border-radius:10px;padding:3px;gap:3px}
+.tabs button{border:0;background:transparent;padding:8px 6px;border-radius:8px;font-weight:600;font-size:14px;color:var(--muted)}
+.tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.filters{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1 1 100%;padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--rule);background:var(--surface);padding:4px 12px;border-radius:999px;font-size:13px;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.toggle{display:inline-flex;align-items:center;gap:8px;border:0;background:none;font-size:13px;color:var(--muted);padding:2px 0}
+.toggle .sw{width:34px;height:20px;border-radius:999px;background:var(--rule);position:relative;transition:background .15s}
+.toggle .sw::after{content:"";position:absolute;top:2px;inset-inline-start:2px;width:16px;height:16px;border-radius:50%;background:var(--surface);transition:transform .15s}
+.toggle[aria-pressed="true"]{color:var(--ink)}
+.toggle[aria-pressed="true"] .sw{background:var(--accent)}
+.toggle[aria-pressed="true"] .sw::after{transform:translateX(-14px)}
+
+/* spotlight: a pitch */
+.spot{position:relative;overflow:hidden;border-radius:14px;background:var(--accent);color:var(--on-accent);padding:18px 18px 16px;display:flex;flex-direction:column;gap:10px}
+.spot::before{content:"";position:absolute;inset:10px;border:1.5px solid var(--chalk);border-radius:6px;pointer-events:none}
+.spot::after{content:"";position:absolute;top:50%;left:50%;width:120px;height:120px;margin:-60px 0 0 -60px;border:1.5px solid var(--chalk);border-radius:50%;pointer-events:none}
+.spot .eyebrow{font-size:12px;letter-spacing:.02em;opacity:.85;position:relative}
+.spot .teams{position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:clamp(26px,7vw,40px);line-height:1.1}
+.spot .teams .h{text-align:start}.spot .teams .a{text-align:end}
+.spot .vs{font-family:var(--body);font-size:14px;font-weight:500;opacity:.8}
+.spot .meta{position:relative;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 16px;font-size:13px}
+.spot .count{font-weight:700}
+
+.notice{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:10px 14px;font-size:13.5px;color:var(--muted)}
+.notice b{color:var(--ink)}
+
+/* match list */
+.day{display:flex;flex-direction:column}
+.day h2{font-size:13px;font-weight:600;color:var(--muted);margin:0 0 6px;letter-spacing:.01em}
+.list{background:var(--surface);border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.m{display:grid;grid-template-columns:64px 1fr;gap:4px 12px;padding:10px 14px;border-top:1px solid var(--rule);align-items:center}
+.m:first-child{border-top:0}
+.m .time{font-size:13px;color:var(--muted);text-align:start}
+.m .time b{display:block;color:var(--ink);font-weight:600;font-size:14px}
+.pair{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;min-width:0}
+.pair .h{text-align:start}.pair .a{text-align:end}
+.pair .t{font-weight:500;overflow-wrap:anywhere}
+.pair .t.w{font-weight:700}
+.pair .t.l{color:var(--muted)}
+.score{font-weight:700;font-size:15px;background:var(--sunk);border-radius:6px;padding:1px 9px;direction:ltr;min-width:52px;text-align:center}
+.dash{color:var(--muted);font-size:12px}
+.sub{grid-column:2;font-size:12px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap}
+.tag{color:var(--accent);font-weight:600}
+.empty{padding:18px;text-align:center;color:var(--muted);font-size:14px}
+
+/* dates */
+.dates{display:flex;flex-direction:column;gap:0}
+.dates h2{font-size:13px;font-weight:600;color:var(--muted);margin:0 0 6px}
+.dt{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:10px 14px;border-top:1px solid var(--rule)}
+.dt:first-child{border-top:0}
+.dt .d{font-weight:700;color:var(--accent)}
+.dt .s{display:block;font-size:12.5px;color:var(--muted)}
+
+/* tables */
+.tbl-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--rule);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:8px 10px;text-align:center;white-space:nowrap}
+th{font-size:12px;font-weight:600;color:var(--muted);border-bottom:1px solid var(--rule)}
+td{border-top:1px solid var(--rule)}
+tr:first-child td{border-top:0}
+td.team,th.team{text-align:start;width:100%}
+td.pts{font-weight:700}
+td.pos{color:var(--muted);position:relative}
+tr.top td.pos{color:var(--accent);font-weight:700}
+tr.rel td.pos{color:var(--loss);font-weight:700}
+.legend{font-size:12px;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+.legend i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-inline-end:5px;vertical-align:middle}
+
+footer{font-size:12px;color:var(--muted);border-top:1px solid var(--rule);padding-top:14px;display:flex;flex-direction:column;gap:6px}
+footer a{color:var(--muted)}
+@media (max-width:420px){
+  .m{grid-template-columns:52px 1fr;padding:10px 12px;gap:4px 8px}
+  .dt{grid-template-columns:92px 1fr}
+  th,td{padding:7px 7px}
+  .gfga{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap" dir="rtl" lang="ar">
+  <header>
+    <div class="brand">
+      <h1>صافرة<span>مواعيد الكرة بتوقيت السعودية</span></h1>
+      <div class="stamp" id="stamp"></div>
+    </div>
+    <div class="tabs" role="tablist">
+      <button role="tab" id="tab-fixtures" data-view="fixtures" aria-selected="true">المباريات</button>
+      <button role="tab" id="tab-results" data-view="results" aria-selected="false">النتائج</button>
+      <button role="tab" id="tab-tables" data-view="tables" aria-selected="false">الترتيب</button>
+    </div>
+    <div class="filters">
+      <div class="chips" id="chips"></div>
+      <button class="toggle" id="bigOnly" aria-pressed="true"><span class="sw"></span>المباريات الكبرى فقط في أوروبا</button>
+    </div>
+  </header>
+
+  <main id="main" style="display:flex;flex-direction:column;gap:20px"></main>
+
+  <footer>
+    <div>بلا إعلانات وبلا رهانات. كل الأوقات بتوقيت الرياض.</div>
+    <div>البيانات: <a href="https://www.api-football.com" target="_blank" rel="noopener">API-Football</a> · تُحدَّث تلقائيًا كل 15 دقيقة.</div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var COMPS = {
+    ksa:{n:'المنتخب السعودي',s:'المنتخب'}, spl:{n:'دوري روشن',s:'روشن'}, kcup:{n:'كأس الملك',s:'كأس الملك'}, acle:{n:'أبطال آسيا للنخبة',s:'نخبة آسيا'}, ucl:{n:'دوري أبطال أوروبا',s:'أبطال أوروبا'},
+    epl:{n:'الدوري الإنجليزي',s:'الإنجليزي'}, laliga:{n:'الدوري الإسباني',s:'الإسباني'}, seriea:{n:'الدوري الإيطالي',s:'الإيطالي'},
+    bund:{n:'الدوري الألماني',s:'الألماني'}, ligue1:{n:'الدوري الفرنسي',s:'الفرنسي'}
+  };
+  var EURO = ['ucl','epl','laliga','seriea','bund','ligue1'];
+  var ORDER = ['ksa','spl','kcup','acle','ucl','epl','laliga','seriea','bund','ligue1'];
+  var TABLE_COMPS = ['spl','epl','laliga','seriea','bund','ligue1'];
+  var TZ = 'Asia/Riyadh', LOC = 'ar-SA-u-nu-latn-ca-gregory';
+  var fDay = new Intl.DateTimeFormat(LOC,{timeZone:TZ,weekday:'long',day:'numeric',month:'long'});
+  var fTime = new Intl.DateTimeFormat(LOC,{timeZone:TZ,hour:'numeric',minute:'2-digit'});
+  var fKey = new Intl.DateTimeFormat('en-CA',{timeZone:TZ,year:'numeric',month:'2-digit',day:'2-digit'});
+  var fStamp = new Intl.DateTimeFormat(LOC,{timeZone:TZ,day:'numeric',month:'long',hour:'numeric',minute:'2-digit'});
+
+  function load(k,d){try{var v=localStorage.getItem('safra.'+k);return v===null?d:JSON.parse(v)}catch(e){return d}}
+  function save(k,v){try{localStorage.setItem('safra.'+k,JSON.stringify(v))}catch(e){}}
+
+  var h = (location.hash||'').slice(1);
+  var state = {
+    view: ['fixtures','results','tables'].indexOf(h)>-1 ? h : load('view','fixtures'),
+    comp: load('comp','all'),
+    big: load('big',true)
+  };
+  var DATA = null;
+  var main = document.getElementById('main');
+
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function el(html){var t=document.createElement('template');t.innerHTML=html.trim();return t.content}
+
+  function renderChips(){
+    var box = document.getElementById('chips'); box.innerHTML='';
+    var list = state.view==='tables' ? TABLE_COMPS : ['all'].concat(ORDER);
+    if(state.view==='tables' && TABLE_COMPS.indexOf(state.comp)<0) state.comp='spl';
+    list.forEach(function(c){
+      var b=document.createElement('button');
+      b.className='chip'; b.id='chip-'+c;
+      b.textContent = c==='all' ? 'الكل' : COMPS[c].s;
+      b.setAttribute('aria-pressed', String(state.comp===c));
+      b.onclick=function(){state.comp=c;save('comp',c);render()};
+      box.appendChild(b);
+    });
+    var tg=document.getElementById('bigOnly');
+    tg.hidden = state.view==='tables' || (state.comp!=='all' && EURO.indexOf(state.comp)<0);
+    tg.setAttribute('aria-pressed', String(state.big));
+  }
+
+  function stOf(m){return m.st || (m.hs!==undefined?'ft':'ns')}
+  function filtered(done){
+    return DATA.matches.filter(function(m){
+      var isDone = stOf(m)==='ft';
+      if(isDone!==done) return false;
+      if(state.comp!=='all' && m.c!==state.comp) return false;
+      if(state.big && EURO.indexOf(m.c)>-1 && !m.big) return false;
+      return true;
+    });
+  }
+
+  function matchRow(m){
+    var d = new Date(m.t), st = stOf(m), done = st==='ft' || st==='live';
+    var hw='',aw='';
+    if(done){ if(m.hs>m.as){hw='w';aw='l'} else if(m.as>m.hs){aw='w';hw='l'} }
+    var mid = done ? '<span class="score num">'+m.hs+' - '+m['as']+'</span>' : '<span class="dash">ضد</span>';
+    var time = st==='live' ? '<span class="live num">'+(m.min!=null?m.min+"'":'مباشر')+'</span>' : st==='off' ? '<span class="off">مؤجلة</span>' : m.notime ? '<span></span>' : '<b class="num">'+fTime.format(d)+'</b>';
+    var sub = [];
+    if(state.comp==='all') sub.push('<span class="tag">'+COMPS[m.c].s+'</span>');
+    if(m.comp) sub.push('<span>'+esc(m.comp)+'</span>');
+    if(m.round) sub.push('<span>'+esc(m.round)+'</span>');
+    if(m.venue) sub.push('<span>'+esc(m.venue)+'</span>');
+    return '<div class="m"><div class="time">'+time+'</div>'+
+      '<div class="pair"><span class="t h '+hw+'">'+esc(m.h)+'</span>'+mid+'<span class="t a '+aw+'">'+esc(m.a)+'</span></div>'+
+      (sub.length?'<div class="sub">'+sub.join('')+'</div>':'')+'</div>';
+  }
+
+  function groupByDay(list){
+    var g=[],idx={};
+    list.forEach(function(m){
+      var k=fKey.format(new Date(m.t));
+      if(!(k in idx)){idx[k]=g.length;g.push({k:k,label:fDay.format(new Date(m.t)),items:[]})}
+      g[idx[k]].items.push(m);
+    });
+    g.forEach(function(x){x.items.sort(function(a,b){return ORDER.indexOf(a.c)-ORDER.indexOf(b.c)||a.t.localeCompare(b.t)})});
+    return g;
+  }
+
+  function daysUntil(iso){
+    var ms = new Date(iso) - new Date();
+    var d = Math.ceil(ms/86400000);
+    if(ms<0) return '';
+    if(d<=1) return 'غدًا أو اليوم';
+    if(d===2) return 'بعد يومين';
+    if(d<=10) return 'بعد '+d+' أيام';
+    return 'بعد '+d+' يومًا';
+  }
+
+  function renderFixtures(){
+    var out='';
+    var sp=DATA.spotlight;
+    if(sp && (state.comp==='all'||state.comp===sp.c) && new Date(sp.t)>new Date()){
+      var d=new Date(sp.t);
+      out+='<section class="spot" aria-label="مباراة الأسبوع"><div class="eyebrow">'+COMPS[sp.c].n+' · '+esc(sp.note)+'</div>'+
+        '<div class="teams"><span class="h">'+esc(sp.h)+'</span><span class="vs">ضد</span><span class="a">'+esc(sp.a)+'</span></div>'+
+        '<div class="meta"><span>'+fDay.format(d)+' · <span class="num">'+fTime.format(d)+'</span> · '+esc(sp.venue)+'</span><span class="count">'+daysUntil(sp.t)+'</span></div></section>';
+    }
+    if(DATA.notice) out+='<div class="notice">'+esc(DATA.notice)+'</div>';
+    var now=new Date();
+    var list=filtered(false).filter(function(m){return new Date(m.t)>new Date(now-3*3600e3)});
+    var groups=groupByDay(list);
+    if(!groups.length) out+='<div class="list"><div class="empty">لا مباريات قادمة في هذه البطولة حاليًا.</div></div>';
+    groups.forEach(function(g){ out+='<section class="day"><h2>'+g.label+'</h2><div class="list">'+g.items.map(matchRow).join('')+'</div></section>'; });
+    if(state.comp==='all' && DATA.dates && DATA.dates.length){
+      out+='<section class="dates"><h2>مواعيد قادمة</h2><div class="list">'+DATA.dates.map(function(x){
+        return '<div class="dt"><span class="d">'+esc(x.d)+'</span><span>'+esc(x.t)+(x.s?'<span class="s">'+esc(x.s)+'</span>':'')+'</span></div>';
+      }).join('')+'</div></section>';
+    }
+    main.innerHTML=out;
+  }
+
+  function renderResults(){
+    var list=filtered(true).sort(function(a,b){return b.t.localeCompare(a.t)});
+    var groups=groupByDay(list);
+    var out='';
+    if(!groups.length) out='<div class="list"><div class="empty">لا نتائج حديثة.</div></div>';
+    groups.forEach(function(g){ out+='<section class="day"><h2>'+g.label+'</h2><div class="list">'+g.items.map(matchRow).join('')+'</div></section>'; });
+    main.innerHTML=out;
+  }
+
+  function renderTables(){
+    var c=state.comp, rows=DATA.tables[c]||[], n=rows.length, spl=rows.length>0 && rows[0].gf!==undefined;
+    var head='<tr><th>#</th><th class="team">الفريق</th><th>لعب</th><th>ف</th><th>ت</th><th>خ</th>'+(spl?'<th class="gfga">له</th><th class="gfga">عليه</th><th>±</th>':'')+'<th>نقاط</th></tr>';
+    var body=rows.map(function(r){
+      var cls = r.r<=4 ? 'top' : (r.r>n-3 ? 'rel' : '');
+      var pl=r.w+r.d+r.l;
+      var gd = spl ? (r.gf-r.ga) : 0;
+      return '<tr class="'+cls+'"><td class="pos num">'+r.r+'</td><td class="team">'+esc(r.n)+'</td><td class="num">'+pl+'</td><td class="num">'+r.w+'</td><td class="num">'+r.d+'</td><td class="num">'+r.l+'</td>'+
+        (spl?'<td class="num gfga">'+r.gf+'</td><td class="num gfga">'+r.ga+'</td><td class="num" dir="ltr">'+(gd>0?'+':'')+gd+'</td>':'')+'<td class="pts num">'+r.p+'</td></tr>';
+    }).join('');
+    main.innerHTML='<section><div class="tbl-wrap"><table><thead>'+head+'</thead><tbody>'+body+'</tbody></table></div>'+
+      '<div class="legend"><span><i style="background:var(--accent)"></i>المراكز الأربعة الأولى</span><span><i style="background:var(--loss)"></i>منطقة الهبوط</span></div></section>';
+  }
+
+  function render(){
+    document.querySelectorAll('.tabs button').forEach(function(b){b.setAttribute('aria-selected',String(b.dataset.view===state.view))});
+    renderChips();
+    if(!DATA){return}
+    if(state.view==='fixtures') renderFixtures();
+    else if(state.view==='results') renderResults();
+    else renderTables();
+  }
+
+  document.querySelectorAll('.tabs button').forEach(function(b){
+    b.onclick=function(){state.view=b.dataset.view;save('view',state.view);try{history.replaceState(null,'','#'+state.view)}catch(e){}render()};
+  });
+  document.getElementById('bigOnly').onclick=function(){state.big=!state.big;save('big',state.big);render()};
+
+  render();
+  main.innerHTML='<div class="list"><div class="empty">جارٍ التحميل…</div></div>';
+  function refresh(first){
+    return fetch('data.json?'+Date.now(),{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
+      var changed = !DATA || d.updated!==DATA.updated;
+      DATA=d;
+      var st=document.getElementById('stamp'), age=(Date.now()-new Date(d.updated))/3600e3;
+      st.textContent='آخر تحديث: '+fStamp.format(new Date(d.updated))+(age>6?' · قد تكون البيانات قديمة':'');
+      st.classList.toggle('stale',age>6);
+      if(changed) render();
+    }).catch(function(){
+      if(first) main.innerHTML='<div class="list"><div class="empty">تعذّر تحميل البيانات. أعد تحميل الصفحة.</div></div>';
+    });
+  }
+  refresh(true);
+  setInterval(function(){ if(document.visibilityState==='visible') refresh(false); }, 5*60*1000);
+  document.addEventListener('visibilitychange',function(){ if(document.visibilityState==='visible') refresh(false); });
+})();
+</script>
+</body>
+</html>

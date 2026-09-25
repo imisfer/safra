@@ -1,0 +1,55 @@
+{
+  "_note": "English team name as API-Football returns it -> Arabic. Matching ignores case, hyphens, 'Al', 'FC', 'SC', 'Saudi', 'Club'. Names the script can't match are written to missing-names.txt; add them here.",
+
+  "Al-Hilal": "الهلال", "Al-Nassr": "النصر", "Al-Ittihad": "الاتحاد", "Al-Ahli": "الأهلي", "Al-Ahli Jeddah": "الأهلي",
+  "Al-Qadsiah": "القادسية", "Al-Qadisiyah": "القادسية", "Al-Shabab": "الشباب", "Al-Ettifaq": "الاتفاق", "Al-Taawoun": "التعاون",
+  "Al-Fateh": "الفتح", "Al-Fayha": "الفيحاء", "Al-Khaleej": "الخليج", "Al-Khaleej Saihat": "الخليج", "Al-Kholood": "الخلود",
+  "Al-Riyadh": "الرياض", "Al-Hazem": "الحزم", "Al-Hazm": "الحزم", "NEOM": "نيوم", "Al-Diriyah": "الدرعية", "Al-Faisaly": "الفيصلي",
+  "Abha": "أبها", "Damac": "ضمك", "Al-Wehda": "الوحدة", "Al-Raed": "الرائد", "Al-Okhdood": "الأخدود", "Al-Orobah": "العروبة",
+  "Al-Najma": "النجمة", "Al-Jabalain": "الجبلين", "Al-Arabi": "العربي", "Al-Tai": "الطائي", "Al-Batin": "الباطن",
+
+  "Al-Ain": "العين", "Al-Wasl": "الوصل", "Shabab Al-Ahli": "شباب الأهلي", "Al-Jazira": "الجزيرة", "Sharjah": "الشارقة", "Al-Wahda": "الوحدة الإماراتي",
+  "Al-Sadd": "السد", "Al-Gharafa": "الغرافة", "Al-Duhail": "الدحيل", "Al-Rayyan": "الريان", "Al-Shamal": "الشمال", "Al-Wakrah": "الوكرة",
+  "Pakhtakor": "باختاكور", "Nasaf": "ناساف", "Esteghlal": "استقلال طهران", "Persepolis": "برسبوليس", "Tractor": "تراكتور",
+  "Al-Shorta": "الشرطة", "Al-Zawraa": "الزوراء", "Al-Quwa Al-Jawiya": "القوة الجوية",
+  "Kawasaki Frontale": "كاواساكي فرونتالي", "Yokohama F. Marinos": "يوكوهاما مارينوس", "Vissel Kobe": "فيسيل كوبي", "Urawa Reds": "أوراوا ريد دايموندز",
+  "Ulsan HD": "أولسان", "Pohang Steelers": "بوهانغ", "Gwangju": "غوانغجو", "Johor Darul Tazim": "جوهور دار التعظيم", "Buriram United": "بوريرام",
+  "Shanghai Port": "شنغهاي بورت", "Shanghai Shenhua": "شنغهاي شينهوا", "Central Coast Mariners": "سنترال كوست",
+
+  "Saudi Arabia": "السعودية", "Qatar": "قطر", "United Arab Emirates": "الإمارات", "Kuwait": "الكويت", "Bahrain": "البحرين", "Oman": "عُمان",
+  "Iraq": "العراق", "Jordan": "الأردن", "Syria": "سوريا", "Lebanon": "لبنان", "Palestine": "فلسطين", "Yemen": "اليمن", "Egypt": "مصر",
+  "Morocco": "المغرب", "Algeria": "الجزائر", "Tunisia": "تونس", "Japan": "اليابان", "South Korea": "كوريا الجنوبية", "Korea Republic": "كوريا الجنوبية",
+  "Iran": "إيران", "Australia": "أستراليا", "China": "الصين", "Uzbekistan": "أوزبكستان", "Indonesia": "إندونيسيا",
+
+  "Manchester City": "مانشستر سيتي", "Arsenal": "آرسنال", "Brighton": "برايتون", "Brentford": "برينتفورد", "Leeds": "ليدز يونايتد",
+  "Liverpool": "ليفربول", "Everton": "إيفرتون", "Hull City": "هال سيتي", "Newcastle": "نيوكاسل", "Chelsea": "تشيلسي", "Ipswich": "إبسويتش",
+  "Manchester United": "مانشستر يونايتد", "Nottingham Forest": "نوتنغهام فورست", "Sunderland": "سندرلاند", "Crystal Palace": "كريستال بالاس",
+  "Aston Villa": "أستون فيلا", "Bournemouth": "بورنموث", "Coventry": "كوفنتري", "Fulham": "فولهام", "Tottenham": "توتنهام",
+  "West Ham": "وست هام", "Wolves": "وولفرهامبتون", "Burnley": "بيرنلي", "Leicester": "ليستر سيتي", "Southampton": "ساوثهامبتون",
+
+  "Barcelona": "برشلونة", "Atletico Madrid": "أتلتيكو مدريد", "Real Betis": "ريال بيتيس", "Real Madrid": "ريال مدريد", "Sevilla": "إشبيلية",
+  "Alaves": "ألافيس", "Deportivo La Coruna": "ديبورتيفو لاكورونيا", "Real Sociedad": "ريال سوسيداد", "Villarreal": "فياريال",
+  "Athletic Club": "أتلتيك بلباو", "Getafe": "خيتافي", "Rayo Vallecano": "رايو فاييكانو", "Osasuna": "أوساسونا", "Celta Vigo": "سيلتا فيغو",
+  "Espanyol": "إسبانيول", "Racing Santander": "راسينغ سانتاندير", "Levante": "ليفانتي", "Elche": "إلتشي", "Valencia": "فالنسيا", "Malaga": "ملقة",
+  "Girona": "جيرونا", "Mallorca": "مايوركا", "Las Palmas": "لاس بالماس", "Real Oviedo": "ريال أوفييدو",
+
+  "AS Roma": "روما", "Inter": "إنتر ميلان", "Lazio": "لاتسيو", "Cagliari": "كالياري", "AC Milan": "ميلان", "Frosinone": "فروزينوني",
+  "Juventus": "يوفنتوس", "Como": "كومو", "Napoli": "نابولي", "Sassuolo": "ساسولو", "Atalanta": "أتالانتا", "Lecce": "ليتشي",
+  "Udinese": "أودينيزي", "Torino": "تورينو", "Parma": "بارما", "Monza": "مونزا", "Fiorentina": "فيورنتينا", "Bologna": "بولونيا",
+  "Genoa": "جنوى", "Venezia": "فينيسيا", "Verona": "هيلاس فيرونا", "Pisa": "بيزا", "Cremonese": "كريمونيزي",
+
+  "Borussia Dortmund": "دورتموند", "Bayern Munich": "بايرن ميونخ", "Bayern München": "بايرن ميونخ", "SC Freiburg": "فرايبورغ", "FC Augsburg": "أوغسبورغ",
+  "Bayer Leverkusen": "باير ليفركوزن", "FSV Mainz 05": "ماينز", "SV Elversberg": "إلفرسبيرغ", "Werder Bremen": "فيردر بريمن",
+  "RB Leipzig": "لايبزيغ", "Eintracht Frankfurt": "آينتراخت فرانكفورت", "Schalke 04": "شالكه", "SC Paderborn 07": "بادربورن",
+  "1. FC Köln": "كولن", "1899 Hoffenheim": "هوفنهايم", "VfB Stuttgart": "شتوتغارت", "Hamburger SV": "هامبورغ", "Union Berlin": "يونيون برلين",
+  "Borussia Mönchengladbach": "مونشنغلادباخ", "VfL Wolfsburg": "فولفسبورغ", "FC St. Pauli": "سانت باولي", "1. FC Heidenheim": "هايدنهايم",
+
+  "Monaco": "موناكو", "Lyon": "ليون", "Paris FC": "باريس إف سي", "Lille": "ليل", "Rennes": "رين", "Paris Saint Germain": "باريس سان جيرمان",
+  "Angers": "أنجيه", "Strasbourg": "ستراسبورغ", "Le Mans": "لومان", "Auxerre": "أوكسير", "Stade Brestois 29": "بريست", "Brest": "بريست",
+  "Lorient": "لوريان", "Toulouse": "تولوز", "Nice": "نيس", "Lens": "لانس", "Troyes": "تروا", "Marseille": "مارسيليا", "Le Havre": "لوهافر", "Nantes": "نانت",
+
+  "Slovan Bratislava": "سلوفان براتيسلافا", "Sporting CP": "سبورتينغ لشبونة", "Galatasaray": "غلطة سراي", "Fenerbahce": "فنربخشة",
+  "PSV Eindhoven": "آيندهوفن", "Shakhtar Donetsk": "شاختار", "Bodo/Glimt": "بودو غليمت", "Sabah": "صباح", "Slavia Praha": "سلافيا براغ",
+  "Club Brugge": "كلوب بروج", "Viking": "فايكنغ", "Feyenoord": "فينورد", "Benfica": "بنفيكا", "Porto": "بورتو", "Ajax": "أياكس",
+  "Celtic": "سلتيك", "Red Bull Salzburg": "سالزبورغ", "Olympiakos Piraeus": "أولمبياكوس", "Copenhagen": "كوبنهاغن", "Qarabag": "قره باغ"
+}
