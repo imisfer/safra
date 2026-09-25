@@ -1,17 +1,17 @@
 {
   "_note": "League IDs are API-Football ids. Run `npm run find-leagues` once with your key and correct any id marked verify:true. season = the year the season starts (2026 for 2026/27).",
-  "window": { "pastDays": 7, "futureDays": 14 },
+  "window": { "pastDays": 1200, "futureDays": 14 },
   "competitions": [
-    { "code": "spl",    "id": 307, "season": 2026, "table": true,  "verify": false, "name": "Saudi Pro League" },
-    { "code": "kcup",   "id": 504, "season": 2026, "table": false, "verify": true,  "name": "King's Cup" },
-    { "code": "acle",   "id": 17,  "season": 2026, "table": false, "verify": true,  "name": "AFC Champions League Elite" },
-    { "code": "ucl",    "id": 2,   "season": 2026, "table": false, "verify": false, "name": "UEFA Champions League" },
-    { "code": "epl",    "id": 39,  "season": 2026, "table": true,  "verify": false, "name": "Premier League" },
-    { "code": "laliga", "id": 140, "season": 2026, "table": true,  "verify": false, "name": "La Liga" },
-    { "code": "seriea", "id": 135, "season": 2026, "table": true,  "verify": false, "name": "Serie A" },
-    { "code": "bund",   "id": 78,  "season": 2026, "table": true,  "verify": false, "name": "Bundesliga" },
-    { "code": "ligue1", "id": 61,  "season": 2026, "table": true,  "verify": false, "name": "Ligue 1" },
-    { "code": "ksa",    "team": 23, "season": 2026, "table": false, "verify": true, "name": "Saudi Arabia national team (all competitions)" }
+    { "code": "spl",    "id": 307, "season": 2023, "table": true,  "verify": false, "name": "Saudi Pro League" },
+    { "code": "kcup",   "id": 504, "season": 2023, "table": false, "verify": true,  "name": "King's Cup" },
+    { "code": "acle",   "id": 17,  "season": 2023, "table": false, "verify": true,  "name": "AFC Champions League Elite" },
+    { "code": "ucl",    "id": 2,   "season": 2023, "table": false, "verify": false, "name": "UEFA Champions League" },
+    { "code": "epl",    "id": 39,  "season": 2023, "table": true,  "verify": false, "name": "Premier League" },
+    { "code": "laliga", "id": 140, "season": 2023, "table": true,  "verify": false, "name": "La Liga" },
+    { "code": "seriea", "id": 135, "season": 2023, "table": true,  "verify": false, "name": "Serie A" },
+    { "code": "bund",   "id": 78,  "season": 2023, "table": true,  "verify": false, "name": "Bundesliga" },
+    { "code": "ligue1", "id": 61,  "season": 2023, "table": true,  "verify": false, "name": "Ligue 1" },
+    { "code": "ksa",    "team": 23, "season": 2023, "table": false, "verify": true, "name": "Saudi Arabia national team (all competitions)" }
   ],
   "bigClubs": [
     "Manchester City", "Arsenal", "Liverpool", "Chelsea", "Manchester United", "Tottenham", "Newcastle",
